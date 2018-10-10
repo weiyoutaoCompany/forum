@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +17,23 @@ import java.util.Map;
 public class CustomerController {
     @Resource
     private CustomerService customerService;
+    //跳转列表页面
+    @RequestMapping(value = "/list")
+    public  String list(HttpServletRequest request){
+        request.setAttribute("list",customerService.getCustomer());
 
+        return "/customer/list.jsp";
+    }
+    //跳转登录页面
+    @RequestMapping(value = "/login1")
+    public  String login1(){
+        return "/customer/login.jsp";
+    }
+    //跳转注册页面
+    @RequestMapping(value = "/signup")
+    public  String signup(){
+        return "/customer/signup.jsp";
+    }
 
     /*
 	 * 跳转到登录页面

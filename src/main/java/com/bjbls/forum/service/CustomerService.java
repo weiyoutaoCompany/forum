@@ -5,6 +5,7 @@ import com.bjbls.forum.model.Customer;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class CustomerService {
@@ -62,11 +63,13 @@ public class CustomerService {
     }
 
     /*
-  检测username是否重名方法
-  @param username  账户名
-  @param password  密码
-   @return
-*/
-
+    customer列表方法
+     @param username  账户名
+     @param password  密码
+      @return
+   */
+    public List<Customer> getCustomer(){
+        return  customerDao.readAll();
+    }
 
 }
